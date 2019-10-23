@@ -9,6 +9,7 @@ import { TransactionService } from '../services/transaction.service';
 export class EnvoiePage implements OnInit {
   tarif: any[];
   next: any;
+  op: boolean;
 
 
     constructor(private transaction : TransactionService) { }
@@ -37,6 +38,7 @@ export class EnvoiePage implements OnInit {
        .subscribe(
          res=>{
            this.tarif=res;
+           console.log(res);
            console.log(this.tarif);
          }
 
@@ -53,4 +55,13 @@ export class EnvoiePage implements OnInit {
     }
     }
   
+    buttonEnvoie(){
+      this.op=false;
+
+
+    }
+    buttonRetrait(){
+      this.op=true;
+
+    }
 }

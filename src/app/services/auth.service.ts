@@ -18,11 +18,10 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router
             ) { 
             }
-  login(data){
- 
-  
-   return this.http.post(this.host, data,{observe: 'response'});
 
+            
+  login(data){
+   return this.http.post(this.host, data,{observe: 'response'});
   }
 
   

@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 
 
 @NgModule({
@@ -22,8 +24,10 @@ import { InterceptorService } from './services/interceptor.service';
      IonicModule.forRoot(),
      AppRoutingModule,
      FormsModule,
+     MaterialModule,
      ReactiveFormsModule,
-     HttpClientModule
+     HttpClientModule,
+     BrowserAnimationsModule
     ],
   providers: [
     AuthService,

@@ -5,6 +5,66 @@
     </ion-toolbar>
   </ion-header>
   
-  <ion-content color="" padding>
-    
+  <ion-content padding >
+   
+        <mat-horizontal-stepper [linear]="isLinear" #stepper style="background-color:grey;">
+          <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel ><span style="color:black;">EXPEDITEUR</span></ng-template>
+              <mat-form-field >
+                <input  matInput placeholder="Prenom" formControlName="firstCtrl" required>
+                
+              </mat-form-field>
+              <mat-form-field >
+                  <input  matInput placeholder="Nom" formControlName="firstCtrl" required>
+                  
+                </mat-form-field>
+                <mat-form-field >
+                    <input  matInput placeholder="Telephone" formControlName="firstCtrl" required>
+                    
+                  </mat-form-field>
+                
+                  <mat-form-field>
+                      <mat-label>Type de Piece</mat-label>
+                      <mat-select required>
+                        <mat-option value="CIN"> CIN </mat-option>
+                        <mat-option value="Passeport"> Passeport </mat-option>
+                        <mat-option value="Permis de Conduire"> Permis de Conduire </mat-option>
+
+                      </mat-select>
+                    </mat-form-field>
+                  <mat-form-field >
+                      <input  matInput placeholder="Numero Piece" formControlName="firstCtrl" required>
+                      
+                    </mat-form-field>
+               
+              <div>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel><span style="color:black;">DESTINATAIRE</span></ng-template>
+              <mat-form-field >
+                  <input  matInput placeholder="Prenom" formControlName="secondCtrl" required>
+                  
+                </mat-form-field>
+                <mat-form-field >
+                    <input  matInput placeholder="Nom" formControlName="secondCtrl" required>
+                    
+                  </mat-form-field>
+                  <mat-form-field >
+                      <input  matInput placeholder="Telephone" formControlName="secondCtrl" required>
+                      
+                    </mat-form-field>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+              </div>
+            </form>
+          </mat-step>
+         
+        </mat-horizontal-stepper>
+        
+        
   </ion-content>

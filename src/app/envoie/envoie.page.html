@@ -1,71 +1,101 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title style="text-align:center; color:green;">TRANSACTION / ENVOIE</ion-title>
+    <ion-title style="text-align:center; color:green;">TRANSACTION / ENVOIE / RETRAIT</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding class="backForm">
-  <form #f="ngForm" (ngSubmit)="onsubmit(f.value)" method="post" >
-      <ion-grid *ngIf="!next ">
-        <h1 style="text-decoration: underline;text-align:center; color:green;">Expediteur</h1>
-
-    <ion-item>
-      <ion-label position="floating">Prenom</ion-label>
-      <ion-input ngModel type="prenom" name="prenom"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Nom </ion-label>
-      <ion-input ngModel type="nom" name="nom"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Telephone</ion-label>
-      <ion-input ngModel type="telephone" name="telephone"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label position="floating">Type Piece </ion-label>
-        <ion-select ngModel type="typePiece" name="typePiece" value="brown" okText="OK" cancelText="Annuler">
-          <ion-select-option value="CIN">CIN</ion-select-option>
-          <ion-select-option value="Passeport">Passeport</ion-select-option>
-          <ion-select-option value="Permis de Conduire">Permis de Conduire</ion-select-option>
-        </ion-select>
+    <div class="flex">
+        <ion-button color="success" shape="round" type="submit" (click)="buttonEnvoie()">
+          <ion-icon slot="start" name="send"></ion-icon>
+          envoie
+        </ion-button>
+        <ion-button color="primary" shape="round" type="submit" (click)="buttonRetrait()">
+          <ion-icon slot="start" name="checkmark-circle"></ion-icon>
+          retrait
+        </ion-button>
+      </div>
+  <div *ngIf="!op">
+      <form #f="ngForm" (ngSubmit)="onsubmit(f.value)" method="post" >
+          <h1 style="text-decoration: underline;text-align:center; color:green;">Expediteur</h1>
+  
+      <ion-item>
+        <ion-label position="floating">Prenom</ion-label>
+        <ion-input ngModel type="prenom" name="prenom"></ion-input>
       </ion-item>
-   
-    <ion-item>
-      <ion-label position="floating">Numero Piece </ion-label>
-      <ion-input ngModel type="numeroPiece" name="numeroPiece"></ion-input>
-    </ion-item>
-      </ion-grid>
-  <ion-grid *ngIf="next">
-      <h1 style="text-decoration: underline; text-align:center; color:green;">Bénéficiaire</h1>
-
-    <ion-item>
-      <ion-label position="floating">Prenom </ion-label>
-      <ion-input ngModel type="prenomb" name="prenomb"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Nom </ion-label>
-      <ion-input ngModel type="nomb" name="nomb"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Telephone </ion-label>
-      <ion-input ngModel type="telephoneb" name="telephoneb"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label position="floating">Montant</ion-label>
-      <ion-input #montant ngModel type="number" name="montant" class="form-control" (keyup)="frais($event)" aria-placeholder="Montant"></ion-input>
-    </ion-item>
-    <ion-item>
-
-    <div ></div>
-         <ion-item *ngIf="tarif">  
-           <ion-label>Frais :  {{tarif.valeur}} FCFA</ion-label>
-          </ion-item>
-            <ion-toggle name="ok" ngModel color="success"></ion-toggle>
+      <ion-item>
+        <ion-label position="floating">Nom </ion-label>
+        <ion-input ngModel type="nom" name="nom"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Telephone</ion-label>
+        <ion-input ngModel type="telephone" name="telephone"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label position="floating">Type Piece </ion-label>
+          <ion-select ngModel type="typePiece" name="typePiece" value="brown" okText="OK" cancelText="Annuler">
+            <ion-select-option value="CIN">CIN</ion-select-option>
+            <ion-select-option value="Passeport">Passeport</ion-select-option>
+            <ion-select-option value="Permis de Conduire">Permis de Conduire</ion-select-option>
+          </ion-select>
         </ion-item>
-  </ion-grid>
-    <ion-button size="small"  (click)="nextForm()"   *ngIf="!next" color="success" >Suivant</ion-button>
-    <ion-button color="danger" size="small"  (click)="nextForm()"  *ngIf="next" >precedent</ion-button>
-    <ion-button type="submit" expand="full" *ngIf="next"  color="primary"> Envoyer</ion-button>
-  </form>
+     
+      <ion-item>
+        <ion-label position="floating">Numero Piece </ion-label>
+        <ion-input ngModel type="numeroPiece" name="numeroPiece"></ion-input>
+      </ion-item>
+    
+        <h1 style="text-decoration: underline; text-align:center; color:green;">Bénéficiaire</h1>
+  
+      <ion-item>
+        <ion-label position="floating">Prenom </ion-label>
+        <ion-input ngModel type="prenomb" name="prenomb"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nom </ion-label>
+        <ion-input ngModel type="nomb" name="nomb"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Telephone </ion-label>
+        <ion-input ngModel type="telephoneb" name="telephoneb"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label position="floating">Montant</ion-label>
+        <ion-input #montant ngModel type="number" name="montant" class="form-control" (keyup)="frais($event)" aria-placeholder="Montant"></ion-input>
+      </ion-item>
+      <ion-item>
+  
+      <div ></div>
+           <ion-item *ngIf="tarif">  
+             <ion-label>Frais :  {{tarif.valeur}} FCFA</ion-label>
+            </ion-item>
+              <ion-toggle name="ok" ngModel color="success"></ion-toggle>
+          </ion-item>
+  
+     <br>
+      <ion-button type="submit" expand="full"  color="primary"> Envoyer</ion-button>
+    </form>
+  </div>
+  
+  <div *ngIf="op">
+      <form #f="ngForm" (ngSubmit)="onsubmit(f.value)" method="post" >
+    
+    
+        <h1 style="text-decoration: underline; text-align:center; color:green;">Retrait</h1>
+  
+      <ion-item>
+        <ion-label position="floating">Code Wari </ion-label>
+        <ion-input ngModel type="code" name="code"></ion-input>
+      </ion-item>
+      <br>
+      <ion-button type="submit" expand="full"  color="primary"> VERIFIER</ion-button>
 
+  
+      <div ></div>
+           
+  
+     
+    </form>
+  </div>
+  
 </ion-content>
