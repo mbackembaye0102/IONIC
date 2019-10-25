@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 export class TransactionService {
   private frais:string = "http://localhost:8000/api/frais";
   rechercheFrais(data)  {
-
     return  this.http.post<any>(this.frais,data);
    }
 
