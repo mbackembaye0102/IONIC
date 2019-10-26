@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+    <ion-title>Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      
+      <ion-card-title>CODE <span style=" color:red;">{{detail.code}} </span></ion-card-title>
+      <ion-card-title>ETAT :<h1 style=" color:red;">{{detail.etat}} </h1> 
+
+      </ion-card-title>
+
+      
+
+    </ion-card-header>
+    <ion-card-content>
+        <h1 style="text-decoration: underline;text-align:center; color:green;">Expediteur</h1>
+
+        Prenom : {{detail.prenom}} <br>
+        Nom  : {{detail.nom}}<br>
+        Téléphone  : {{detail.telephone}}<br>
+        Type Piece : {{detail.typePiece}}<br>
+        Numero Piece : {{detail.numeroPiece}}<br>
+
+        <h1 style="text-decoration: underline;text-align:center; color:green;">Beneficiaire</h1>
+        Prenom : {{detail.prenomb}}<br>
+        Nom  : {{detail.nomb}}<br>
+        Téléphone  : {{detail.telephoneb}}<br>
+        Type Piece : {{detail.typePieceb}}<br>
+        Numero Piece : {{detail.numeroPieceb}}<br>
+        <h1 style="text-decoration: underline;text-align:center; color:green;">Operation</h1>
+        Montant :  {{detail.montant}} FCFA
+        Frais :  {{detail.frais}}<br>
+        Commission Envoie :  {{detail.CommissionPartenaire}}<br>
+        Date Envoie :  {{detail.dateEnvoie}}<br>
+        Commission Retrait : {{detail.commissionRetrait}}<br>
+        Date Retrait : {{detail.dateRetrait}}<br>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

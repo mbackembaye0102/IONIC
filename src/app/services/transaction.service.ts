@@ -1,15 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Transaction } from '../model/transaction';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionService {
+  selectedTrans :Transaction;
+
+
   private frais:string = "http://localhost:8000/api/frais";
   rechercheFrais(data)  {
     return  this.http.post<any>(this.frais,data);
    }
+
+   private detailT:string="http://localhost:8000/api/detailTransaction";
+   detaitTransaction(data)  {
+    return  this.http.post<any>(this.detailT,data);
+   }
+
 
 
 
