@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title style="text-align:center; color:green;">TRANSACTION / ENVOIE / RETRAIT</ion-title>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title style="text-align:center; color:green;">ENVOIE / RETRAIT</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -73,7 +76,7 @@
           <ion-label position="floating">Montant</ion-label>
         <ion-input #montant ngModel type="number" name="montant" class="form-control" (keyup)="frais(f.value)" aria-placeholder="Montant"></ion-input>
       </ion-item>
-      
+
       <ion-item>
   
       <div ></div>

@@ -14,12 +14,14 @@ export class ListePage implements OnInit {
   public transactions: FormGroup;
   trans: boolean;
   constructor(private transaction : TransactionService, private formGroup: FormBuilder, private router :Router) { }
-
+  debut=new Date();
+  fin =new Date();
   ngOnInit() {
+    this.detailT();
   }
   detaitTransaction=this.formGroup.group({
-    debut: [''],
-    fin: ['']
+    debut: [this.debut],
+    fin: [this.fin]
   })
   segmentChanged(ev: any) {
     console.log('Segment changed', ev);
@@ -33,8 +35,8 @@ export class ListePage implements OnInit {
   }
   
 
-  detailT (data:any){
-    console.log(data);
+  detailT (){
+    console.log();
          this.transaction.detaitTransaction(this.detaitTransaction.value)
         .subscribe(
        data=>{

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>REÇU RETRAIT</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <h1 style="text-align:center;">********RECU********</h1>
+    Guichetier :  {{data.guichetierRetrait.username}} <br>
+    Agence :  {{data.guichetierRetrait.partenaire.entreprise}} 
+    
+ 
+     <h2 style="text-align:center;">********Expediteur********</h2>
+     Prenom : {{data.prenom}} <br>
+     Nom  : {{data.nom}}<br>
+     Téléphone  : {{data.telephone}}<br>
+     Type Piece : {{data.typePiece}}<br>
+     Numero Piece : {{data.numeroPiece}}<br>
+
+     <h2 style="text-align:center;">********Beneficiaire********</h2>
+     Prenom : {{data.prenomb}}<br>
+     Nom  : {{data.nomb}}<br>
+     Téléphone  : {{data.telephoneb}}<br>
+     Type Piece : {{data.typePieceb}}<br>
+     Numero Piece : {{data.numeroPieceb}}<br>
+    
+     <h2 style="text-align:center;">********Transaction********</h2>
+     Code : {{data.code}} <br>
+     Date Envoie :  {{data.dateEnvoie}}<br>
+     Date Retrait :  {{data.dateRetrait}}<br>
+     Montant :  {{data.montant}} FCFA <br>
+     Frais :  {{data.frais}}<br>
+     Total :  {{data.total}}<br>
+
+
+
+     <button ion-button full (click)="createPdf()">IMPRIMER</button>
+  
+</ion-content>

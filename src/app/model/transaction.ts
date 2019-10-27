@@ -15,6 +15,6 @@ export interface Transaction {
     // tslint:disable-next-line: ban-types
     prenom: string , 
     nom: String;
-    guichetier: {nom: string, prenom: string};
-    guichetierRetrait: {nom: string, prenom: string};
+    guichetier: {nom: string, prenom: string, username: string};
+    guichetierRetrait: {nom: string, prenom: string, username: string};
 }

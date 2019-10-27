@@ -27,7 +27,7 @@ export class HomePage implements OnInit {
         console.log(res);
       let jwt=res.body['token'];
       this.auth.saveToken(jwt);  
-        this._router.navigateByUrl('envoie')
+        this._router.navigateByUrl('menu/accueil')
         this.presentLoading();
       },
       err => {

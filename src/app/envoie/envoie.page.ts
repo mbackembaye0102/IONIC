@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactionService } from '../services/transaction.service';
 import { LoadingController, AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-envoie',
@@ -14,24 +15,95 @@ export class EnvoiePage implements OnInit {
   codes: any[];
 
 
-    constructor(public alertController: AlertController, private transaction : TransactionService, public loadingController: LoadingController) { }
+    constructor(public alertController: AlertController,
+       private transaction : TransactionService,
+        public loadingController: LoadingController,
+        private router :Router) { }
   
     ngOnInit() {
     }
-  
+    prenomB:String;
+    prenomE:String;
+
+    nomB:String;
+    nomE:String;
+    cinE:String;
+    code:String;
+    telB;
+    telE;
+    cinB;
+    typecinB:String;
+    typecinE:String;
+
+    montant;
+    frai;
+    total;
+    dateE;
+   
+      info(response){
+    
+        //EXPEDITEUR
+        this.nomB = response.nomb
+        this.prenomB = response.prenomb
+        this.telB = response.telelephoneb
+        this.typecinB=response.typePieceb
+        this.cinB = response.numeroPieceb
+
+      //DESTINATAIRE
+        this.nomE = response.nom
+        this.prenomE = response.prenom
+        this.telE = response.telelephone
+        this.typecinE=response.typePiece
+        this.cinE = response.numeroPiece
+
+      //TRANSACTION
+
+      this.dateE = response.dateEnvoie
+      this.code = response.code
+      this.montant=response.montant
+      this.frai=response.frais
+      this.total=response.total
+      
+
+     
+      }
+
+      async alertOk() {
+        const alert = await this.alertController.create({
+            header: 'Envoi d\'argent',
+            subHeader: 'Infos :',
+            message: 'Transfert réussi.'
+            +'<p>Date : '+this.dateE+'</p>'
+            +'<p>Code transaction : '+this.code+'</p>'
+            +'<p>Montant transfert : '+this.montant+'</p>'
+            +'<p>Frais transfert : '+this.frais+'</p>'
+            +'<p>Total envoi : '+this.total+'</p>'
+            +'<p>---------Bénéficiaire--------- </p>'
+            +'<p>Prenom : '+this.prenomB +'</p>'
+            +'<p>Nom : '+this.nomB +'</p>'
+            +'<p>Telephone : '+this.telB +'</p>'
+            +'<p>---------Expéditeur--------- </p>'
+            +'<p>Prenom : '+this.prenomE +'</p>'
+            +'<p>Nom : '+this.nomE +'</p>'
+            +'<p>Telephone : '+this.telE +'</p>'
+            +'<p>TypePiece : '+this.typecinE +'</p>'
+            +'<p>Numero Piece : '+this.cinE +'</p>',
+            buttons: ['OK']
+        })
+      await alert.present();
+      }
+
     onsubmit (data:any){
       console.log(data);
-           this.transaction.envoie(data)
+      this.transaction.envoie(data)
        .subscribe(
          data=>{
            console.log('L\'envoie à été bien efféctué');
+          this.info(data)
           this.presentLoading();
-          this.presentEnvoie();
+          //this.alertOk()
+          this.goToView(data);   
 
-        // window.location.reload();
-
-
-        
          }, err=>{
           console.log(err);
   
@@ -45,9 +117,10 @@ export class EnvoiePage implements OnInit {
            this.transaction.retrait(data)
        .subscribe(
          data=>{
-          window.location.reload();
+          this.info(data)
           this.presentAlert();
-          this.presentCode();
+          this.goToViewRetrait(data);   
+
          }, err=>{
           console.log(err);
          }
@@ -165,4 +238,14 @@ export class EnvoiePage implements OnInit {
       });
       return await loading.present();
     }
+
+    goToView(detail: any){
+      this.transaction.selectedTrans = detail;
+      this.router.navigateByUrl('/recu');   
+      }
+    
+      goToViewRetrait(detail: any){
+        this.transaction.selectedTrans = detail;
+        this.router.navigateByUrl('/recu-retrait');   
+        }
 }

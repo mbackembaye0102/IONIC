@@ -9,6 +9,11 @@ const routes: Routes = [
   { path: 'envoie', loadChildren: './envoie/envoie.module#EnvoiePageModule' },
   { path: 'liste', loadChildren: './liste/liste.module#ListePageModule' },
   { path: 'detail', loadChildren: './detail/detail.module#DetailPageModule' },
+  { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
+  { path: 'recu', loadChildren: './recu/recu.module#RecuPageModule' },
+  { path: 'recu/:id', loadChildren: './recu/recu.module#RecuPageModule' },
+  { path: 'recu-retrait', loadChildren: './recu-retrait/recu-retrait.module#RecuRetraitPageModule' },
+  { path: 'compte', loadChildren: './compte/compte.module#ComptePageModule' },
 ];
 
 @NgModule({

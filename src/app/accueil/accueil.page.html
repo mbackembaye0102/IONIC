@@ -1,12 +1,41 @@
 <ion-header>
   <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
     <ion-title class="title">ACCUEIL 
-        <img class="logo" src="../../assets/wari.png"  width="40" height="40" alt="">
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-    <h1>DAARA DJI TRANSFERT</h1>
-    <p>L'envoie et le Retrait d'argent est devenu plus sûr!!!!</p>
+    <section text-center margin-bottom>
+      
+        <h1 style="font-size:1.4em" no-margin>WELCOME, <br>
+          DAARA DJI TRANSFERT</h1>
+      </section>
+      <ion-grid>
+        <ion-row >
+          <ion-col col>
+            <ion-card text-center padding color="danger" (click)="transaction()">
+              <ion-icon name="person"></ion-icon>
+              <h2>TRANSACTION</h2>
+            </ion-card>
+          </ion-col>
+          <ion-col col>
+            <ion-card text-center padding color="danger" (click)="liste()">
+              <ion-icon name="people"></ion-icon>
+              <h2>LISTER TRANSACTION</h2>
+            </ion-card>
+          </ion-col>
+          <ion-col col>
+              <ion-card text-center padding color="danger" (click)="compte()">
+                <ion-icon name="cash"></ion-icon>
+                <h2>COMPTE</h2>
+              </ion-card>
+            </ion-col>
+        </ion-row>
+       
+       
+      </ion-grid>
 </ion-content>
